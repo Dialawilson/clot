@@ -1,3 +1,4 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
 class AppColor {
   AppColor._();
@@ -8,7 +9,7 @@ class AppColor {
   static const Color btnBackgroundColor = Color(0xFF8E6CEF);
   static const Color btnTextColor = Color(0xFFFFFFFF);
 
-  
+
   // input placeholder 
   static const Color inputPlaceholder = Color(0xFF272727);
 
