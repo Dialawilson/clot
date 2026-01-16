@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:clot/screens/Home/Home.dart';
+// import 'package:clot/screens/Home/Home.dart';
+import 'package:clot/screens/splash/Splash.dart';
 
 void main(){
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget{
     return MaterialApp(
       // title: 'Clot App',
       debugShowCheckedModeBanner: false,
-      home: const Home(),
+      home: const Splash(),
     );
   }
 }
