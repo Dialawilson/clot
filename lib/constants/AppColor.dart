@@ -14,7 +14,7 @@ class AppColor {
   static const Color inputPlaceholder = Color(0xFF272727);
 
   // input BG
-  static const Color inputBG = Color(0xFFF4F4F4);
+  static const Color inputBg= Color(0xFFF4F4F4);
 // text
 static const Color textColor = Color(0xFF272727);
 }

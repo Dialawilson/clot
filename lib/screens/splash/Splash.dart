@@ -1,4 +1,4 @@
-import 'package:clot/screens/Home/Home.dart';
+import 'package:clot/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
 
@@ -21,7 +21,7 @@ class _SplashState extends State<Splash> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context, 
-      MaterialPageRoute(builder: (context) => const Home()),
+      MaterialPageRoute(builder: (context) => const Login()),
     );
   }
 
