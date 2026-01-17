@@ -1,4 +1,5 @@
 import 'package:clot/screens/login/login.dart';
+import 'package:clot/widgets/ctm_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
 
@@ -41,7 +42,9 @@ class _RegisterState extends State<Register> {
                 keyboardType: TextInputType.text,
                 decoration: AppColor.inputDecoration('Full Name'),
 
-              )
+              ),
+              SizedBox(height: 16),
+              CtmTextField(hint: 'Last Name', controller: TextEditingController()),
               // Additional registration fields and buttons go here
             ],
           ),
