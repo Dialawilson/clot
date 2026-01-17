@@ -1,6 +1,7 @@
 import 'package:clot/screens/login/login.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/screens/Register/Register.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -21,7 +22,7 @@ class _SplashState extends State<Splash> {
     if (!mounted) return;
     Navigator.pushReplacement(
       context, 
-      MaterialPageRoute(builder: (context) => const Login()),
+      MaterialPageRoute(builder: (context) =>  Register()),
     );
   }
 

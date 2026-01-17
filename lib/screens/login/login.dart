@@ -1,3 +1,4 @@
+import 'package:clot/screens/Register/Register.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,6 +29,9 @@ class _LoginState extends State<Login> {
               backgroundColor: Colors.white,
               elevation: 0,
               leading: IconButton(
+                style: IconButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 187, 187, 187),
+                ),
                 icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
                 onPressed: () => setState(() => isEmailEntered = false),
               ),
@@ -218,6 +222,7 @@ class _LoginState extends State<Login> {
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 // Navigate to RegisterPage()
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
               },
           ),
         ],
