@@ -2,6 +2,7 @@ import 'package:clot/screens/login/login.dart';
 import 'package:clot/widgets/ctm_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/widgets/btn.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -45,7 +46,21 @@ class _RegisterState extends State<Register> {
               ),
               SizedBox(height: 16),
               CtmTextField(hint: 'Last Name', controller: TextEditingController()),
-              // Additional registration fields and buttons go here
+
+              SizedBox(height: 16,),
+
+              CtmTextField(hint: 'Email Address', controller: TextEditingController()),
+
+              SizedBox(height: 16,),
+
+              CtmTextField(hint: 'Password', controller: TextEditingController()),
+              SizedBox(height: 32,),
+              Btn(
+                onPressed: () {},
+                text: 'Continue',
+              ),
+              SizedBox(height: 16,),
+           
             ],
           ),
         ),
