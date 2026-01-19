@@ -1,5 +1,6 @@
 import 'package:clot/screens/login/login.dart';
 import 'package:clot/widgets/ctm_textfield.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
 import 'package:clot/widgets/btn.dart';
@@ -59,7 +60,8 @@ class _RegisterState extends State<Register> {
                 onPressed: () {},
                 text: 'Continue',
               ),
-              SizedBox(height: 16,),
+              SizedBox(height: 26,),
+              _buildLinks(context)
            
             ],
           ),
@@ -68,16 +70,31 @@ class _RegisterState extends State<Register> {
     );
   }
 
-  InputDecoration _inputDecoration(String hint){
-    return InputDecoration(
-      hintText: hint,
-      filled: true,
-      fillColor: const Color.fromARGB(255, 244, 244, 244),
-      contentPadding: const EdgeInsets.all(16),
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
-        borderSide: BorderSide.none
-      )
+ 
+
+  Widget _buildLinks(BuildContext context){
+    return RichText(
+      textAlign: TextAlign.center,
+      text: TextSpan(
+        text: 'Forgot Password?',
+        style: TextStyle(color: AppColor.textColor),
+        children: [
+          TextSpan(
+            text: ' Reset',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: AppColor.btnBackgroundColor,
+            ),
+              recognizer:TapGestureRecognizer()
+              ..onTap=(){
+
+              },
+          ),
+
+ 
+           
+        ],
+      ),
     );
   }
 }
