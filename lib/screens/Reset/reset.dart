@@ -14,6 +14,9 @@ class _ResetState extends State<Reset> {
       appBar: AppBar(
         elevation: 0,
         leading: IconButton(
+          style: IconButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+          ),
           onPressed: () {
             Navigator.pop(context);
           },

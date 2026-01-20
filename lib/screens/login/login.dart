@@ -223,7 +223,8 @@ class _LoginState extends State<Login> {
           const TextSpan(text: "Don't have an account? "),
           TextSpan(
             text: "Create One",
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            style: const TextStyle(fontWeight: FontWeight.bold,
+            color: AppColor.btnBackgroundColor),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 // Navigate to RegisterPage()
