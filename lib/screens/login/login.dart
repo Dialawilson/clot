@@ -13,30 +13,30 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  // Controllers to capture user input
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-
-  // State variable to toggle between Email and Password views
   bool isEmailEntered = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // 1. Back button appears only when on the password screen
+      // AppBar is only shown on the password screen to provide a back path
       appBar: isEmailEntered 
           ? AppBar(
               backgroundColor: Colors.white,
               elevation: 0,
-              
-              
-              leading: IconButton(
-                style: IconButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 223, 223, 223),
+              centerTitle: false,
+              leadingWidth: 70, // Gives the button room to breathe
+              leading: Padding(
+                padding: const EdgeInsets.only(left: 20),
+                child: CircleAvatar(
+                  backgroundColor: const Color(0xFFF4F4F4),
+                  child: IconButton(
+                    icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 16),
+                    onPressed: () => setState(() => isEmailEntered = false),
+                  ),
                 ),
-                icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
-                onPressed: () => setState(() => isEmailEntered = false),
               ),
             )
           : null,
@@ -46,8 +46,8 @@ class _LoginState extends State<Login> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Adjust spacing based on whether AppBar is present
-              SizedBox(height: isEmailEntered ? 20 : 60),
+              // Large spacing for the first screen, tighter for the second
+              SizedBox(height: isEmailEntered ? 20 : 80),
               
               Text(
                 'Sign in',
@@ -55,54 +55,32 @@ class _LoginState extends State<Login> {
                   color: AppColor.textColor,
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
+                  letterSpacing: -0.5,
                 ),
               ),
               const SizedBox(height: 32),
 
-              // 2. Conditional UI: Show Email or Password Field
+              // Dynamic Input Fields
               if (!isEmailEntered) ...[
-                // EMAIL VIEW
                 TextField(
                   controller: _emailController,
+                  autofocus: true,
                   keyboardType: TextInputType.emailAddress,
                   decoration: _inputDecoration('Email Address'),
                 ),
               ] else ...[
-                // PASSWORD VIEW
                 TextField(
                   controller: _passwordController,
+                  autofocus: true,
                   obscureText: true,
                   decoration: _inputDecoration('Password'),
                 ),
               ],
 
               const SizedBox(height: 16),
-
-              // 3. Main Action Button
-              _mainButton(
-                text: isEmailEntered ? "Login" : "Continue",
-                onPressed: () {
-                  setState(() {
-                    if (!isEmailEntered) {
-                      // Check if email is provided before moving to password
-                      if (_emailController.text.isNotEmpty) {
-                        isEmailEntered = true;
-                      }
-                    } else {
-                      // Login Logic Here
-                      print("Login with: ${_emailController.text} and ${_passwordController.text}");
-                    }
-                  });
-                },
-              ),
-
-              const SizedBox(height: 16),
-
-              // 4. Sign Up Link (and Forgot Password if on password screen)
               _buildLinks(context),
-              const SizedBox(height: 75),
 
-              // 5. Social Logins (Only show on the first screen)
+              // Social logins are hidden on the password step for a cleaner focus
               if (!isEmailEntered) ...[
                 const SizedBox(height: 40),
                 _socialButton(
@@ -127,19 +105,38 @@ class _LoginState extends State<Login> {
           ),
         ),
       ),
+      // The fixed button at the bottom
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.only(
+          left: 23, 
+          right: 23, 
+          bottom: MediaQuery.of(context).viewInsets.bottom + 23, // Floats above keyboard
+        ),
+        child: _mainButton(
+          text: isEmailEntered ? 'Sign In' : 'Continue',
+          onPressed: () {
+            setState(() {
+              if (!isEmailEntered) {
+                if (_emailController.text.isNotEmpty) isEmailEntered = true;
+              } else {
+                // Sign in logic
+              }
+            });
+          },
+        ),
+      ),
     );
   }
-
-  // --- Helper Widgets ---
 
   InputDecoration _inputDecoration(String hint) {
     return InputDecoration(
       hintText: hint,
+      hintStyle: const TextStyle(color: Colors.grey, fontSize: 15),
       filled: true,
-      fillColor: const Color.fromARGB(255, 244, 244, 244),
-      contentPadding: const EdgeInsets.all(16),
+      fillColor: const Color(0xFFF4F4F4), // A soft, elegant grey
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(12),
         borderSide: BorderSide.none,
       ),
     );
@@ -170,7 +167,7 @@ class _LoginState extends State<Login> {
         onPressed: onTap,
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          side: BorderSide(color: Colors.grey.withOpacity(0.2)),
+          side: BorderSide(color: Colors.grey.withOpacity(0.15)),
         ),
         child: Row(
           children: [
@@ -196,39 +193,21 @@ class _LoginState extends State<Login> {
   }
 
   Widget _buildLinks(BuildContext context) {
-    if (isEmailEntered) {
-      return RichText(
-        
-        text: TextSpan(
-          style: const TextStyle(color: Colors.black, fontSize: 14),
-          children: [
-          const TextSpan(text: "Forgot your password? "),
-          TextSpan(
-            text: " Reset",
-            style: const TextStyle(fontWeight: FontWeight.bold,
-            color: AppColor.btnBackgroundColor),
-            recognizer: TapGestureRecognizer()
-              ..onTap = () {
-                // Navigate to ForgotPasswordPage()
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Reset()));
-              },
-          ),
-        ]),
-      );
-    }
     return RichText(
       text: TextSpan(
         style: const TextStyle(color: Colors.black, fontSize: 14),
         children: [
-          const TextSpan(text: "Don't have an account? "),
+          TextSpan(text: isEmailEntered ? "Forgot your password? " : "Don't have an account? "),
           TextSpan(
-            text: "Create One",
-            style: const TextStyle(fontWeight: FontWeight.bold,
-            color: AppColor.btnBackgroundColor),
+            text: isEmailEntered ? "Reset" : "Create One",
+            style: const TextStyle(fontWeight: FontWeight.bold),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                // Navigate to RegisterPage()
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Register()));
+                if (isEmailEntered) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Reset()));
+                } else {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) =>  Register()));
+                }
               },
           ),
         ],
