@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/screens/Reset/reset.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -28,9 +29,11 @@ class _LoginState extends State<Login> {
           ? AppBar(
               backgroundColor: Colors.white,
               elevation: 0,
+              
+              
               leading: IconButton(
                 style: IconButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 187, 187, 187),
+                  backgroundColor: const Color.fromARGB(255, 223, 223, 223),
                 ),
                 icon: const Icon(Icons.arrow_back_ios_new, color: Colors.black, size: 20),
                 onPressed: () => setState(() => isEmailEntered = false),
@@ -201,11 +204,13 @@ class _LoginState extends State<Login> {
           children: [
           const TextSpan(text: "Forgot your password? "),
           TextSpan(
-            text: "Reset",
-            style: const TextStyle(fontWeight: FontWeight.bold),
+            text: " Reset",
+            style: const TextStyle(fontWeight: FontWeight.bold,
+            color: AppColor.btnBackgroundColor),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
                 // Navigate to ForgotPasswordPage()
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Reset()));
               },
           ),
         ]),

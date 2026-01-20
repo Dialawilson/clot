@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
 import 'package:clot/widgets/btn.dart';
+import 'package:clot/screens/Reset/reset.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class _RegisterState extends State<Register> {
           onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder:  (context)=>Login()));
           },
-          icon: Icon(Icons.arrow_back_ios_new, color: Colors.black),
+          icon: Icon(Icons.arrow_back_ios_new, color: AppColor.textColor,),
         ),
       ),
       body: SafeArea(
@@ -34,7 +35,7 @@ class _RegisterState extends State<Register> {
                 'Create Account',
                 style: TextStyle(
                   color: AppColor.textColor,
-                  fontSize: 32,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -87,7 +88,8 @@ class _RegisterState extends State<Register> {
             ),
               recognizer:TapGestureRecognizer()
               ..onTap=(){
-
+                // Navigate to Reset Page
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>Reset()));
               },
           ),
 
