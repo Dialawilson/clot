@@ -1,4 +1,5 @@
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/screens/success/sucess.dart';
 import 'package:clot/widgets/btn.dart';
 import 'package:flutter/material.dart';
 
@@ -131,6 +132,7 @@ class _ResetState extends State<Reset> {
               }
             } else {
               // Final Action (e.g., Navigate to Home or Show Success)
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>  Success()));
               print("Finished: Gender Male: $isMale, Age: $selectedAgeRange");
             }
           }, 
