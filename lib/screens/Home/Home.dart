@@ -1,4 +1,5 @@
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/widgets/dropdown.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -46,42 +47,15 @@ class _HomeState extends State<Home> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Image.asset('assets/img/profile.png', width: 40, height: 40, errorBuilder: (context, error, stackTrace) => const Icon(Icons.account_circle, size: 40)),
-                  
-                  // Wrap Dropdown in a Container or SizedBox to control width
-                  SizedBox(
-                    width: 150,
-                    child: DropdownButtonFormField<String>(
-                      value: selectedValue,
-                      hint: const Text('Categories'),
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: const Color(0xFFF4F4F4),
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30),
-                          borderSide: BorderSide.none,
-                        ),
-                      ),
-                      items: items.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                      onChanged: (newValue) {
-                        setState(() {
-                          selectedValue = newValue;
-                        });
-                      },
-                    ),
-                  ),
-                  const Icon(Icons.notifications_none, color: Colors.black,  size: 30),
-                ],
-              ),
+             HomeHeader(
+    selectedValue: selectedValue,
+    items: items,
+    onChanged: (newValue) {
+      setState(() {
+        selectedValue = newValue;
+      });
+    },
+  ),
               
               const SizedBox(height: 20),
               Text(
