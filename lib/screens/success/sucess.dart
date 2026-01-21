@@ -16,12 +16,14 @@ class Success extends StatelessWidget {
             Icon(Icons.check_circle, color: Colors.green, size: 100),
             Image.asset('assets/img/success.png', width: 150, height: 150),
             SizedBox(height: 24),
-            Text(
-              'We sent you an Email to reset your password',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: AppColor.textColor,
+            Center(
+              child: Text(
+                'We sent you an Email to reset your password',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.textColor,
+                ),
               ),
             ),
             SizedBox(height: 16),
