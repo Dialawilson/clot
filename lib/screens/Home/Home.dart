@@ -1,5 +1,6 @@
 import 'package:clot/constants/AppColor.dart';
 import 'package:clot/widgets/dropdown.dart';
+import 'package:clot/widgets/search.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {
@@ -58,13 +59,28 @@ class _HomeState extends State<Home> {
   ),
               
               const SizedBox(height: 20),
-              Text(
-                "Home Screen",
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.textColor,
-                ),
+              Search(),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Categories",
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.textColor,
+                    ),
+                  ),
+
+                  TextButton(onPressed: (){
+                    // Action for "See All" button
+                  }, child: Text("See All", style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: AppColor.btnBackgroundColor,
+                  ),))
+                ],
               ),
               const SizedBox(height: 20),
               
