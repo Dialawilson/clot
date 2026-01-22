@@ -63,15 +63,18 @@ class HomeHeader extends StatelessWidget {
 
         // Notification Icon
         Container(
-          padding: const EdgeInsets.all(8),
+          padding: const EdgeInsets.all(2),
           decoration: const BoxDecoration(
             color: AppColor.btnBackgroundColor,
             shape: BoxShape.circle,
           ),
-          child: const Icon(
-            Icons.shopping_cart_checkout_outlined,
-            color: Colors.white,
-            size: 24,
+          child: const IconButton(
+            onPressed: null,
+            icon: Icon(
+              Icons.shopping_cart_checkout_outlined,
+              color: Colors.white,
+              size: 24,
+            ),
           ),
         ),
       ],
