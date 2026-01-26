@@ -25,6 +25,7 @@ class HomeHeader extends StatelessWidget {
           radius: 20,
           backgroundColor: const Color(0xFFF4F4F4),
           backgroundImage: AssetImage(profileImageUrl),
+          child: Text('helo'),
           // Fallback if image fails to load
           onBackgroundImageError: (_, __) => const Icon(Icons.account_circle),
         ),
