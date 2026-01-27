@@ -56,7 +56,7 @@ class ProductCard extends StatelessWidget {
                     onTap: onFavorite,
                     child: Icon(
                       isFavorite ? Icons.favorite : Icons.favorite_border,
-                      color: isFavorite ? Colors.red : Colors.black87,
+                      color: isFavorite ? Colors.red : AppColor.textColor,
                       size: 20,
                     ),
                   ),

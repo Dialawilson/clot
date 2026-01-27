@@ -42,13 +42,13 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: SingleChildScrollView(
-        // Added BouncingScrollPhysics for a more premium "iOS" feel
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // 1. Header Section
               HomeHeader(
                 selectedValue: selectedValue,
                 items: items,
@@ -57,17 +57,18 @@ class _HomeState extends State<Home> {
                 },
               ),
               const SizedBox(height: 20),
+              
+              // 2. Search Section
               const Search(),
               const SizedBox(height: 20),
               
-              // Categories Section
+              // 3. Categories Section
               _buildSectionHeader("Categories", () {}),
               const SizedBox(height: 15),
               
-              // Using a SingleChildScrollView (Horizontal) for Categories
-              // This prevents "Pixel Overflow" if you add more categories later
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
                 child: Row(
                   children: [
                     Categories(imgPath: 'assets/img/profile.png', title: 'Hoodies', pageLink: const Home()),
@@ -84,31 +85,42 @@ class _HomeState extends State<Home> {
               ),
 
               const SizedBox(height: 25),
+              
+              // 4. Top Selling Section
               _buildSectionHeader("Top Selling", () {}),
               const SizedBox(height: 20),
 
-              // FIX: GridView inside SingleChildScrollView
-              GridView.builder(
-                shrinkWrap: true, // 1. Tells Grid to take only needed space
-                physics: const NeverScrollableScrollPhysics(), // 2. Disables inner scrolling
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  childAspectRatio: 0.62, // Adjusted to fit image + title + price
-                  crossAxisSpacing: 15,
-                  mainAxisSpacing: 15,
-                ),
-                itemCount: 4, // Set a smaller number for testing
-                itemBuilder: (context, index) => const ProductCard(
-                  imgUrl: 'assets/img/jacket.png',
-                  title: 'Men\'s Harrington Jacket',
-                  description: 'Classic fit outwear',
-                  price: '\$148',
+              // FIXED: Removed the extra SingleChildScrollView. ListView.builder handles it.
+              SizedBox(
+                height: 285, // Fixed height for the sliding area
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 5,
+                  // AlwaysScrollable ensures the swipe gesture is captured over the parent scroll
+                  physics: const AlwaysScrollableScrollPhysics(
+                    parent: BouncingScrollPhysics(),
+                  ),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 15),
+                      child: SizedBox(
+                        width: 160, // Fixed width for each card
+                        child: ProductCard(
+                          imgUrl: 'assets/img/jacket.png',
+                          title: 'Men\'s Harrington Jacket',
+                          description: 'Classic fit outwear',
+                          price: '\$148',
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
 
               const SizedBox(height: 25),
               
-              // Promo Banner
+              
+              // 5. Promo Banner Section
               Container(
                 height: 150,
                 width: double.infinity,
@@ -118,7 +130,7 @@ class _HomeState extends State<Home> {
                 ),
                 child: const Center(child: Text("Promo Banner or Category")),
               ),
-              const SizedBox(height: 30), // Padding at the bottom
+              const SizedBox(height: 30), 
             ],
           ),
         ),
@@ -126,7 +138,6 @@ class _HomeState extends State<Home> {
     );
   }
 
-  // Helper method to keep code clean
   Widget _buildSectionHeader(String title, VoidCallback onSeeAll) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
