@@ -1,4 +1,5 @@
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/widgets/bottomNav.dart';
 import 'package:clot/widgets/categories.dart';
 import 'package:clot/widgets/dropdown.dart';
 import 'package:clot/widgets/product_card.dart';
@@ -118,23 +119,49 @@ class _HomeState extends State<Home> {
               ),
 
               const SizedBox(height: 25),
-              
+              _buildSectionHeader('New In' , (){}),
+
+              const SizedBox(height: 25,),
+              SizedBox(height: 285,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 5,
+                physics: const AlwaysScrollableScrollPhysics(
+                  parent: BouncingScrollPhysics(),
+                ),
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 15),
+                    child: SizedBox(
+                      width: 160,
+                      child: ProductCard(
+                        imgUrl: 'assets/img/jacket.png',
+                        title: 'Men\'s Harrington Jacket',
+                        description: 'Classic fit outwear',
+                        price: '\$148',
+                      ),
+                    ),
+                  );
+                },
+              ),),
+
               
               // 5. Promo Banner Section
-              Container(
-                height: 150,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: AppColor.btnBackgroundColor.withOpacity(0.1),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: const Center(child: Text("Promo Banner or Category")),
-              ),
+              // Container(
+              //   height: 150,
+              //   width: double.infinity,
+              //   decoration: BoxDecoration(
+              //     color: AppColor.btnBackgroundColor.withOpacity(0.1),
+              //     borderRadius: BorderRadius.circular(12),
+              //   ),
+              //   child: const Center(child: Text("Promo Banner or Category")),
+              // ),
               const SizedBox(height: 30), 
             ],
           ),
         ),
       ),
+      bottomNavigationBar: const BottomNav(),
     );
   }
 
