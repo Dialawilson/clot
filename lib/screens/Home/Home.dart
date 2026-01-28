@@ -171,7 +171,7 @@ class _HomeState extends State<Home> {
       children: [
         Text(
           title,
-          style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+          style: const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
         TextButton(
           onPressed: onSeeAll,
