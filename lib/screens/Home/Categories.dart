@@ -15,7 +15,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     {'name': 'Hoodies', 'img': 'assets/img/hoodie.png'},
     {'name': 'Accessories', 'img': 'assets/img/Accessories.png'},
     {'name': 'Shorts', 'img': 'assets/img/shorts.png'},
-    {'name': 'Shoes', 'img': 'assets/img/shoes.png'},
+    {'name': 'Shoes', 'img': 'assets/img/shoe.png'},
     {'name': 'Bags', 'img': 'assets/img/bag.png'},
   ];
 
