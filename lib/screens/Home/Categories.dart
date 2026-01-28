@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
-import 'package:clot/screens/Home/Home.dart';
+import 'package:clot/screens/Home/Cate_Result.dart';
 
 class CategoriesPage extends StatefulWidget {
   const CategoriesPage({super.key});
+  // onTap removed
 
   @override
   State<CategoriesPage> createState() => _CategoriesPageState();
 }
 
 class _CategoriesPageState extends State<CategoriesPage> {
+  // onTap removed
   // A helper list to keep the UI code clean
   final List<Map<String, String>> categories = [
     {'name': 'Hoodies', 'img': 'assets/img/hoodie.png'},
@@ -29,7 +31,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
         // Using Navigator.pop is better than push for a "back" button
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back_ios_new_rounded, color: AppColor.textColor),
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: AppColor.textColor,
+          ),
         ),
       ),
       body: SafeArea(
@@ -44,12 +49,13 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 25),
-              
+
               // We use Expanded and ListView so the list is scrollable
               Expanded(
                 child: ListView.separated(
                   itemCount: categories.length,
-                  separatorBuilder: (context, index) => const SizedBox(height: 12),
+                  separatorBuilder: (context, index) =>
+                      const SizedBox(height: 12),
                   itemBuilder: (context, index) {
                     return _buildCategoryItem(
                       categories[index]['name']!,
@@ -69,7 +75,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
   Widget _buildCategoryItem(String title, String imagePath) {
     return GestureDetector(
       onTap: () {
-        // Navigate to specific category search results
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CateResult()),
+        );
       },
       child: Container(
         height: 90,
@@ -91,14 +100,11 @@ class _CategoriesPageState extends State<CategoriesPage> {
             const SizedBox(width: 20),
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
-              ),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
             const Spacer(),
-          //   const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Colors.grey),
-          //
+            //   const Icon(Icons.arrow_forward_ios_rounded, size: 16, color: Colors.grey),
+            //
           ],
         ),
       ),
