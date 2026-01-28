@@ -1,4 +1,5 @@
 import 'package:clot/constants/AppColor.dart';
+import 'package:clot/screens/Home/Categories.dart';
 import 'package:clot/widgets/bottomNav.dart';
 import 'package:clot/widgets/categories.dart';
 import 'package:clot/widgets/dropdown.dart';
@@ -72,15 +73,15 @@ class _HomeState extends State<Home> {
                 physics: const BouncingScrollPhysics(),
                 child: Row(
                   children: [
-                    Categories(imgPath: 'assets/img/profile.png', title: 'Hoodies', pageLink: const Home()),
+                    Categories(imgPath: 'assets/img/profile.png', title: 'Hoodies', pageLink: const CategoriesPage()),
                     const SizedBox(width: 20),
-                    Categories(imgPath: 'assets/img/profile.png', title: 'Shorts', pageLink: const Home()),
+                    Categories(imgPath: 'assets/img/profile.png', title: 'Shorts', pageLink: const CategoriesPage()),
                     const SizedBox(width: 20),
-                    Categories(imgPath: 'assets/img/profile.png', title: 'Shoes', pageLink: const Home()),
+                    Categories(imgPath: 'assets/img/profile.png', title: 'Shoes', pageLink: const CategoriesPage()),
                     const SizedBox(width: 20),
-                    Categories(imgPath: 'assets/img/profile.png', title: 'Bag', pageLink: const Home()),
+                    Categories(imgPath: 'assets/img/profile.png', title: 'Bag', pageLink: const CategoriesPage()),
                     const SizedBox(width: 20),
-                    Categories(imgPath: 'assets/img/profile.png', title: 'Accessory', pageLink: const Home()),
+                    Categories(imgPath: 'assets/img/profile.png', title: 'Accessory', pageLink: const CategoriesPage()),
                   ],
                 ),
               ),
