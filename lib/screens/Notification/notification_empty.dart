@@ -2,8 +2,6 @@ import 'package:clot/constants/AppColor.dart';
 import 'package:clot/screens/Home/Cate_Result.dart';
 import 'package:clot/widgets/btn.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-
 class EmptyNotification extends StatefulWidget{
   const EmptyNotification({super.key});
 

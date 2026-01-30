@@ -39,7 +39,8 @@ class _BottomNavState extends State<BottomNav> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: _selectedIndex, // 2. Tell the bar which index is active
-      onTap: _onItemTapped,        // 3. Update the index when clicked
+      onTap: _onItemTapped,     
+      // 3. Update the index when clicked
       type: BottomNavigationBarType.fixed,
       backgroundColor: AppColor.inputBg,
       selectedItemColor: AppColor.btnBackgroundColor,

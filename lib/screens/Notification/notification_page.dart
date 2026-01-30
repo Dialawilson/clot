@@ -1,3 +1,4 @@
+import 'package:clot/screens/Notification/notification_data.dart';
 import 'package:clot/widgets/bottomNav.dart';
 import 'package:clot/screens/Notification/notification_empty.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +39,8 @@ class NotificationPage extends StatelessWidget {
           Align(alignment: Alignment.center, child: Text('Notification', style: TextStyle(fontWeight: FontWeight.bold),)),
           const SizedBox(height: 20),
           // const NotificationCard()
-          Center(child: const EmptyNotification())
+          // Center(child: const EmptyNotification()),
+          Center(child: const NotificationData()),
 
         ],
       ),
