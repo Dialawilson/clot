@@ -1,3 +1,4 @@
+import 'package:clot/screens/Orders/Orders_page.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/constants/AppColor.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -27,9 +28,9 @@ class _BottomNavState extends State<BottomNav> {
     if(index == 1){
       Navigator.push(context, MaterialPageRoute(builder: (context) => const NotificationPage()));
     }
-    // if(index == 2){
-    //   Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsPage()));
-    // }
+    if(index == 2){
+      Navigator.push(context, MaterialPageRoute(builder: (context) => const OrdersPage()));
+    }
     // if(index == 3){
     //   Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage()));
     // }
