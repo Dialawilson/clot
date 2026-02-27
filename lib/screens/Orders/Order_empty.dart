@@ -1,3 +1,4 @@
+import 'package:clot/screens/Orders/Order_detail/order_list.dart';
 import 'package:flutter/material.dart';
 import 'package:clot/screens/Home/Home.dart';
 import 'package:clot/widgets/btn.dart';
@@ -25,8 +26,8 @@ class _OrderEmptyState extends State<OrderEmpty> {
           SizedBox(height: 20),
           SizedBox(width: 250,
             child: Btn(onPressed: (){
-              Navigator.pop(context, 
-              MaterialPageRoute(builder: (context) => const Home()));
+              Navigator.push(context, 
+              MaterialPageRoute(builder: (context) => const OrderList()));
             
             }, text: 'Explore Categories'),
           )
