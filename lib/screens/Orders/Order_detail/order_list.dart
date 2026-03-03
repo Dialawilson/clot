@@ -119,7 +119,7 @@ class _OrderListState extends State<OrderList> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Orderdetailscreen()),
+            MaterialPageRoute(builder: (context) => const OrderDetailsScreen()),
           );
         },
         child: Padding(
