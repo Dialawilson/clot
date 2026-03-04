@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-// import 'package:clot/constants/AppColor.dart'; 
 
 class OrderDetailsScreen extends StatelessWidget {
   const OrderDetailsScreen({super.key});
@@ -28,22 +27,76 @@ class OrderDetailsScreen extends StatelessWidget {
           children: [
             const Text(
               "Order Status",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800, letterSpacing: -0.5),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 25),
             
-            // The Timeline logic
-            buildOrderItem('Delivered', '28 May', isCompleted: true, isLast: false),
-            buildOrderItem('Shipped', '27 May', isCompleted: true, isLast: false),
-            buildOrderItem('In Transit', '26 May', isCompleted: false, isLast: false),
-            buildOrderItem('Order Placed', '25 May', isCompleted: false, isLast: true),
+            // Timeline - Fixed Logic
+            buildOrderItem('Delivered', '28 May', isCompleted: false, isLast: false),
+            buildOrderItem('Shipped', '27 May', isCompleted: false, isLast: false),
+            buildOrderItem('In Transit', '26 May', isCompleted: true, isLast: false),
+            buildOrderItem('Order Placed', '25 May', isCompleted: true, isLast: true),
 
             const SizedBox(height: 40),
-            Text(
+            const Text(
               "Order items",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800, letterSpacing: -0.5),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
+
+            // Items Card
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: const Icon(Icons.inventory_2_outlined, size: 30, color: Colors.white),
+                  ),
+                  const SizedBox(width: 16),
+                  const Text(
+                    '4 items',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 15),
+                  ),
+                  const Spacer(),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('View all', style: TextStyle(color: Color(0xFF8E6CEF))),
+                  )
+                ],
+              ),
+            ),
+
+            const SizedBox(height: 40),
+            const Text(
+              'Shipping details',
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+            ),
+            const SizedBox(height: 15),
+
+            // Shipping Address Card
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: Colors.grey.shade100,
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: const Text(
+                'John Doe 123 Main Street City, State, ZIP\nPhone: (123) 456-7890',
+                style: TextStyle(height: 1.5, fontSize: 14, color: Colors.black87),
+              ),
+            ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
@@ -51,26 +104,26 @@ class OrderDetailsScreen extends StatelessWidget {
   }
 
   Widget buildOrderItem(String title, String date, {required bool isCompleted, required bool isLast}) {
-    return IntrinsicHeight( // Important to make the vertical line match the height
+    return IntrinsicHeight(
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Left Side: Icon and Line
+          // Left Side: Dot and Line
           Column(
             children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 500),
-                width: 28,
-                height: 28,
+              Container(
+                width: 24,
+                height: 24,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: isCompleted ? const Color(0xFF8E6CEF) : Colors.white, // Using a stylish purple
+                  color: isCompleted ? const Color(0xFF8E6CEF) : Colors.transparent,
                   border: Border.all(
                     color: isCompleted ? const Color(0xFF8E6CEF) : Colors.grey.shade300,
                     width: 2,
                   ),
                 ),
                 child: isCompleted 
-                  ? const Icon(Icons.check, size: 16, color: Colors.white) 
+                  ? const Icon(Icons.check, size: 14, color: Colors.white) 
                   : null,
               ),
               if (!isLast)
@@ -84,28 +137,32 @@ class OrderDetailsScreen extends StatelessWidget {
           ),
           const SizedBox(width: 20),
           
-          // Right Side: Text Content
+          // Right Side: Content
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: isCompleted ? FontWeight.w700 : FontWeight.w500,
-                    color: isCompleted ? Colors.black : Colors.grey.shade400,
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: isCompleted ? FontWeight.w700 : FontWeight.w500,
+                        color: isCompleted ? Colors.black : Colors.grey.shade400,
+                      ),
+                    ),
+                    Text(
+                      date,
+                      style: TextStyle(
+                        fontSize: 13,
+                        color: Colors.grey.shade500,
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 4),
-                Text(
-                  date,
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey.shade500,
-                  ),
-                ),
-                const SizedBox(height: 60), // Spacing between steps
+                const SizedBox(height: 30), // Vertical spacing between items
               ],
             ),
           ),

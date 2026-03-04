@@ -1,4 +1,5 @@
 import 'package:clot/screens/Orders/Order_empty.dart';
+import 'package:clot/widgets/bottomNav.dart';
 import 'package:flutter/material.dart';
 
 class OrdersPage extends StatefulWidget {
@@ -28,6 +29,7 @@ class _OrdersPageState extends State<OrdersPage> {
           
         ],
       ),
+   bottomNavigationBar:  const BottomNav(),
     );
   }
 }
