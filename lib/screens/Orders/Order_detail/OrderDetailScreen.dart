@@ -37,6 +37,13 @@ class OrderDetailsScreen extends StatelessWidget {
             buildOrderItem('Shipped', '27 May', isCompleted: true, isLast: false),
             buildOrderItem('In Transit', '26 May', isCompleted: false, isLast: false),
             buildOrderItem('Order Placed', '25 May', isCompleted: false, isLast: true),
+
+            const SizedBox(height: 40),
+            Text(
+              "Order items",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.5),
+            ),
+            const SizedBox(height: 10),
           ],
         ),
       ),
@@ -79,8 +86,8 @@ class OrderDetailsScreen extends StatelessWidget {
           
           // Right Side: Text Content
           Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   title,
@@ -98,7 +105,7 @@ class OrderDetailsScreen extends StatelessWidget {
                     color: Colors.grey.shade500,
                   ),
                 ),
-                const SizedBox(height: 30), // Spacing between steps
+                const SizedBox(height: 60), // Spacing between steps
               ],
             ),
           ),
