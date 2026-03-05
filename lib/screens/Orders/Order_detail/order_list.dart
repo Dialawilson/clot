@@ -105,17 +105,21 @@ class _OrderListState extends State<OrderList> {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
+        // color: Colors.white,
+        borderRadius: BorderRadius.circular(1),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.03),
-            blurRadius: 15,
+            blurRadius: 1,
             offset: const Offset(0, 8),
           )
         ],
       ),
       child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          elevation: 2,
+
+        ),
         onPressed: () {
           Navigator.push(
             context,
@@ -131,7 +135,7 @@ class _OrderListState extends State<OrderList> {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFF1F4FF),
+                  color:  Colors.white,
                   borderRadius: BorderRadius.circular(15),
                 ),
                 child: const Icon(Icons.inventory_2_rounded, color: Colors.black87, size: 28),

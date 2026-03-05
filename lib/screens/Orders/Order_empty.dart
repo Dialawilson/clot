@@ -1,6 +1,6 @@
 import 'package:clot/screens/Orders/Order_detail/order_list.dart';
 import 'package:flutter/material.dart';
-import 'package:clot/screens/Home/Home.dart';
+// import 'package:clot/screens/Home/Home.dart';
 import 'package:clot/widgets/btn.dart';
 import 'package:clot/constants/AppColor.dart';
 

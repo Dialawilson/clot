@@ -88,7 +88,7 @@ class OrderDetailsScreen extends StatelessWidget {
               width: double.infinity,
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey.shade100,
+                color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: const Text(
@@ -130,7 +130,7 @@ class OrderDetailsScreen extends StatelessWidget {
                 Expanded(
                   child: Container(
                     width: 2,
-                    color: isCompleted ? const Color(0xFF8E6CEF) : Colors.grey.shade200,
+                    color: isCompleted ? const Color(0xFF8E6CEF) : Colors.grey.shade800,
                   ),
                 ),
             ],
