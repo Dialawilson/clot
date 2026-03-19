@@ -34,7 +34,7 @@ class HomeHeader extends StatelessWidget {
         SizedBox(
           width: 160, // Slightly wider for better text fit
           child: DropdownButtonFormField<String>(
-            value: selectedValue,
+            initialValue: selectedValue,
             hint: const Text(
               'Categories',
               style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),

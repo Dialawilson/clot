@@ -91,7 +91,7 @@ class _ResetState extends State<Reset> {
                 
                 // Age Dropdown
                 DropdownButtonFormField<String>(
-                  value: selectedAgeRange,
+                  initialValue: selectedAgeRange,
                   hint: const Text("Select Age Range"),
                   dropdownColor: Colors.white,
                   decoration: InputDecoration(

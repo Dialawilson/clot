@@ -5,7 +5,7 @@ import 'package:clot/widgets/btn.dart';
 import 'package:clot/constants/AppColor.dart';
 
 class OrderEmpty extends StatefulWidget {
-  const OrderEmpty({Key? key}) : super(key: key);
+  const OrderEmpty({super.key});
 
   @override
   State<OrderEmpty> createState() => _OrderEmptyState();

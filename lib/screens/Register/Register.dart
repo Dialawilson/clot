@@ -7,6 +7,8 @@ import 'package:clot/widgets/btn.dart';
 import 'package:clot/screens/Reset/reset.dart';
 
 class Register extends StatefulWidget {
+  const Register({super.key});
+
   @override
   _RegisterState createState() => _RegisterState();
 }

@@ -35,20 +35,17 @@ class SearchScreen extends StatelessWidget {
           },
           suggestionsBuilder: (BuildContext context, SearchController controller) {
             // ✅ Wrap suggestions in a ListView so they have bounded constraints
-            return ListView.builder(
-              shrinkWrap: true, // prevents infinite height
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                final String item = 'Search suggestion $index';
-                return ListTile(
-                  leading: const Icon(Icons.history, color: Colors.black54, size: 20),
-                  title: Text(item),
-                  trailing: const Icon(Icons.north_west, size: 16),
-                  onTap: () {
-                    controller.closeView(item);
-                  },
-                );
-              },
+            final keyword = controller.value.text;
+            return List <ListTile>.generate(5,(int index){
+              final String item = 'Result $index for "$keyword"';
+              return ListTile(
+                leading:const Icon(Icons.history, size: 20),
+                title: Text(item, style: const TextStyle(fontSize: 14)),
+                onTap: (){
+                  controller.closeView(item);
+                },
+              );
+            },
             );
           },
         ),

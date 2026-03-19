@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
               const SizedBox(height: 20),
               
               // 2. Search Section
-              const SearchScreen(),
+              SizedBox(child: const SearchScreen()),
               const SizedBox(height: 20),
               
               // 3. Categories Section

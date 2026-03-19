@@ -1,6 +1,5 @@
 import 'package:clot/screens/Notification/notification_data.dart';
 import 'package:clot/widgets/bottomNav.dart';
-import 'package:clot/screens/Notification/notification_empty.dart';
 import 'package:flutter/material.dart';
 
 class NotificationPage extends StatelessWidget {

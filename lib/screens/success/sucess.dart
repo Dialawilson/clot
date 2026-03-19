@@ -5,6 +5,8 @@ import 'package:clot/screens/Home/Home.dart';
 
 
 class Success extends StatelessWidget {
+  const Success({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
